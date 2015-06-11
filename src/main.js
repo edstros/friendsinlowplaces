@@ -1,11 +1,12 @@
 angular
   .module('lowPlaces', [])
-  .constant('API_URL', 'https://friendsinlowplaces.firebaseio.com');
+  //.constant('API_URL', 'https://friendsinlowplaces.firebaseio.com')
 
-  .controller('ASDFCtrl', function() {
+  .controller('LoginCtrl', function() {
     var vm = this;
-    vm.login = function(){
-      var fb = new Firebase(API_URL);
+    vm.url = 'https://friendsinlowplaces.firebaseio.com';
+    vm.authenticate = function(){
+      var fb = new Firebase(vm.url);
 
         fb.authWithPassword({
           email: vm.email,
