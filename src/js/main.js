@@ -9,12 +9,16 @@ angular
       })
       .when('/drunks', {
         templateUrl: 'views/loggedIn.html'
-    });
+      })
+      .when('/register', {
+        templateUrl: 'views/loginPage.html'
+      });
   })
 
   .controller('LoginCtrl', function() {
     var vm = this;
     vm.url = 'https://friendsinlowplaces.firebaseio.com';
+    vm.register = {};
     vm.authenticate = function(){
       var fb = new Firebase(vm.url);
 
@@ -33,5 +37,18 @@ angular
           }
         });
 
+    };
+    vm.onModalLoad = function () {
+      $('#modal').modal('show');
+
+      $('#modal').on('hidden.bs.modal', function (e) {
+        $location.path("loginPage.html");
+      });
+    };
+    vm.submitRegisterForm = function () {
+
     }
   });
+
+
+
