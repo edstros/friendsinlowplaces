@@ -1,6 +1,13 @@
 angular
-  .module('lowPlaces', [])
+  .module('lowPlaces', ['ngRoute'])
   //.constant('API_URL', 'https://friendsinlowplaces.firebaseio.com')
+
+  .config(function ($routeProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: 'views/loginPage.html'
+    });
+  })
 
   .controller('LoginCtrl', function() {
     var vm = this;

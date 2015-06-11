@@ -9,16 +9,8 @@ html(lang="en-US", ng-app="lowPlaces")
     link(rel="stylesheet" href="css/main.css")
   body
     .container
-      h1 Log In
-      form(ng-controller="LoginCtrl as login" ng-submit="login.authenticate()")
-        .form-group
-          label(for="emailAddress") Email address
-          input(ng-model="login.email" type="email" class="form-control" id="emailAddress" placeholder="Enter email")
-        .form-group
-          label(for="password") Password
-          input(ng-model="login.password" type="password" class="form-control" id="password" placeholder="Password")
-
-          input(type="submit" class="btn btn-default" value="Log In")
+      h1 Friends in Low Places
+      .app(ng-view)
       //- form
       //-   .form-group
       //-     label(for="firstName") First Name
@@ -38,4 +30,4 @@ html(lang="en-US", ng-app="lowPlaces")
 
       //-     input(type="submit" class="btn btn-default") Register
     script(src="lib/build.js")
-    script(src="main.js")
+    script(src="js/main.js")
