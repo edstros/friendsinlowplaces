@@ -13,11 +13,11 @@
           .form-group(ng-class="{'has-success': infoForm.bev.$dirty && main.person.beverage, 'has-error': infoForm.bev.$dirty && !main.person.beverage}")
             label.control-label Beverage of choice
             input.form-control(name="bev", type="select", placeholder="beer", ng-model="main.person.beverage", required)
-              select.form-control
-                Beer
-                Bourbon
-                Champagne
-                Wine
+            select.form-control
+              option Beer
+              option Bourbon
+              option Champagne
+              option Wine
           .form-group(ng-class="{'has-success': infoForm.pic.$dirty && infoForm.i.$valid , 'has-error': infoForm.pic.$dirty && infoForm.i.$invalid }")
             label.control-label Photo
             input.form-control(name="i", type="url", placeholder="http://google.com/img.jpg", ng-model="main.person.photo", required)

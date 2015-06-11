@@ -1,10 +1,11 @@
 h2 Log In
-  form(ng-controller="LoginCtrl as login" ng-submit="login.authenticate()")
+  form(name="loginForm" ng-controller="LoginCtrl as login" ng-submit="loginForm.$valid && login.authenticate()" novalidate)
     .form-group
       label(for="emailAddress") Email address
-      input(ng-model="login.email" type="email" class="form-control" id="emailAddress" placeholder="Enter email")
+      input(ng-model="login.email" type="email" class="form-control" id="emailAddress" placeholder="Enter email" required)
     .form-group
       label(for="password") Password
-      input(ng-model="login.password" type="password" class="form-control" id="password" placeholder="Password")
+      input(ng-model="login.password" type="password" class="form-control" id="password" placeholder="Password" required)
 
       input(type="submit" class="btn btn-default" value="Log In")
+      button(ng-click="login.register()" class="btn btn-default") Register
