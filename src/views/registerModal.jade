@@ -7,21 +7,21 @@
         h1 Add information
       .modal-body
         form(name="infoForm", novalidate)
-          .form-group(ng-class="{'has-success': infoForm.n.$dirty && login.register.name.length > 1, 'has-error': infoForm.n.$dirty && !login.register.name}")
+          .form-group(ng-class="{'has-success': infoForm.name.$dirty && login.register.name, 'has-error': infoForm.name.$dirty && !login.register.name}")
             label.control-label Name
             input.form-control(name="name", type="text", ng-model="login.register.name", placeholder="Not Sure" required)
           .form-group(ng-class="{'has-success': infoForm.bev.$dirty && login.register.beverage, 'has-error': infoForm.bev.$dirty && !login.register.beverage}")
             label.control-label Beverage of choice
-            input.form-control(name="bev", type="select", ng-model="login.register.beverage", placeholder="Brawndo" required)
-          .form-group(ng-class="{'has-success': infoForm.pic.$dirty && infoForm.i.$valid , 'has-error': infoForm.pic.$dirty && infoForm.i.$invalid }")
+            input.form-control(name="bev", type="text", ng-model="login.register.beverage", placeholder="Brawndo" required)
+          .form-group(ng-class="{'has-success': infoForm.pic.$dirty && infoForm.pic.$valid , 'has-error': infoForm.pic.$dirty && infoForm.pic.$invalid}")
             label.control-label Photo
-            input.form-control(name="photo", type="url", ng-model="login.register.photo", placeholder="http://www.datsite.com/datpic.jpg" required)
-          .form-group(ng-class="{'has-success': infoForm.n.$dirty && login.register.name.length > 1, 'has-error': infoForm.n.$dirty && !login.register.name}")
+            input.form-control(name="pic", type="url", ng-model="login.register.pic", placeholder="http://www.datsite.com/datpic.jpg" required)
+          .form-group(ng-class="{'has-success': infoForm.email.$dirty && infoForm.email.$valid, 'has-error': infoForm.email.$dirty && infoForm.email.$invalid}")
             label.control-label Email address
-            input.form-control(name="email" type="email" ng-model="login.email" placeholder="WelcomeToCostco@ILoveYou.com" required)
-          .form-group(ng-class="{'has-success': infoForm.n.$dirty && login.register.name.length > 1, 'has-error': infoForm.n.$dirty && !login.register.name}")
+            input.form-control(name="email" type="email" ng-model="login.register.email" placeholder="WelcomeToCostco@ILoveYou.com" required)
+          .form-group(ng-class="{'has-success': infoForm.password.$dirty && login.register.password, 'has-error': infoForm.password.$dirty && !login.register.password}")
             label.control-label Password
-            input.form-control(name="password" type="password" ng-model="login.password" placeholder="FamilyStyle5" required)
+            input.form-control(name="password" type="password" ng-model="login.register.password" placeholder="FamilyStyle5" required)
       .modal-footer
         button.btn.btn-danger(data-dismiss="modal") Cancel
-        button.btn.btn-primary(ng-click="infoForm.$valid && login.submitRegisterForm()", ng-disabled="infoForm.$invalid") Submit
+        button.btn.btn-primary(ng-click="infoForm.$valid && login.submitRegisterForm(register)", ng-disabled="infoForm.$invalid") Submit
