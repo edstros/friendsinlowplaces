@@ -1,6 +1,7 @@
-var app = angular.module('lowPlaces', []);
+angular
+  .module('lowPlaces', [])
 
-  // .controller('ASDFCtrl', function() {
-  //   var vm = this;
+  .controller('ASDFCtrl', function() {
+    var vm = this;
 
-  // });
+  });
