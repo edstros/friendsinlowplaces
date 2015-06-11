@@ -6,6 +6,9 @@ angular
     $routeProvider
       .when('/', {
         templateUrl: 'views/loginPage.html'
+      })
+      .when('/drunks', {
+        templateUrl: 'views/loggedIn.html'
     });
   })
 
@@ -23,6 +26,7 @@ angular
             console.log('Error', err)
           } else {
             console.log("logged in successfully")
+            location.href='#/drunks'
             // $rootScope.auth = authData;
             // $location.path('/people');
             // $scope.$apply();
