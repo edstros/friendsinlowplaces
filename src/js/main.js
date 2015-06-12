@@ -41,12 +41,33 @@ angular
     vm.onModalLoad = function () {
       $('#modal').modal('show');
 
-      $('#modal').on('hidden.bs.modal', function (e) {
-        $location.path("loginPage.html");
-      });
+      // $('#modal').on('hidden.bs.modal', function (e) {
+      //   $location.path("loginPage.html");
+      // });
     };
     vm.submitRegisterForm = function () {
-
+      var ref = new Firebase("https://friendsinlowplaces.firebaseio.com");
+      ref.createUser({
+        email: vm.register.email,
+        password: vm.register.password
+      }, function(error, userData) {
+        if (error) {
+          switch (error.code) {
+            case "EMAIL_TAKEN":
+              console.log("The new user account cannot be created because the email is already in use.");
+              break;
+            case "INVALID_EMAIL":
+              console.log("The specified email is not a valid email.");
+              break;
+            default:
+              console.log("Error creating user:", error);
+          }
+        } else {
+          console.log("Successfully created user account with uid:", userData.uid);
+          $('#modal').modal('hide');
+          location.href='#/drunks';
+        }
+      });
     }
   });
 
