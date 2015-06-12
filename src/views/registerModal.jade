@@ -15,7 +15,7 @@
             input.form-control(name="bev", type="text", ng-model="login.register.beverage", placeholder="Brawndo" required)
           .form-group(ng-class="{'has-success': infoForm.pic.$dirty && infoForm.pic.$valid , 'has-error': infoForm.pic.$dirty && infoForm.pic.$invalid}")
             label.control-label Photo
-            input.form-control(name="pic", type="url", ng-model="login.register.pic", placeholder="http://www.datsite.com/datpic.jpg" required)
+            input.form-control(name="pic", type="url", ng-model="login.register.pic", placeholder="http://www.datsite.com/datpic.jpg")
           .form-group(ng-class="{'has-success': infoForm.email.$dirty && infoForm.email.$valid, 'has-error': infoForm.email.$dirty && infoForm.email.$invalid}")
             label.control-label Email address
             input.form-control(name="email" type="email" ng-model="login.register.email" placeholder="WelcomeToCostco@ILoveYou.com" required)

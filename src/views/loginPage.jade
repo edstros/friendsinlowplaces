@@ -1,12 +1,12 @@
 div(ng-controller="LoginCtrl as login")
   h2 Log In
-    form(name="loginForm" ng-submit="loginForm.$valid && login.authenticate()" novalidate)
-      .form-group
-        label(for="emailAddress") Email address
-        input(ng-model="login.email" type="email" class="form-control" id="emailAddress" placeholder="Enter email" required)
-      .form-group
-        label(for="password") Password
-        input(ng-model="login.password" type="password" class="form-control" id="password" placeholder="Password" required)
-      input.btn.btn-default(type="submit" value="Log In")
-    a.btn.btn-default(ng-click="login.onModalLoad()") Register
-    div(ng-include="'views/registerModal.html'")
+  form(name="loginForm" ng-submit="loginForm.$valid && login.authenticate()" novalidate)
+    .form-group
+      label(for="emailAddress") Email address
+      input(ng-model="login.email" type="email" class="form-control" id="emailAddress" placeholder="Enter email" required)
+    .form-group
+      label(for="password") Password
+      input(ng-model="login.password" type="password" class="form-control" id="password" placeholder="Password" required)
+    input.btn.btn-default(type="submit" value="Log In")
+  a.btn.btn-default(ng-click="login.onModalLoad()") Register
+  div(ng-include="'views/registerModal.html'")

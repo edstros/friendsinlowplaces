@@ -15,7 +15,7 @@ angular
       });
   })
 
-  .controller('LoginCtrl', function() {
+  .controller('LoginCtrl', function(/*$rootScope, $scope*/$http) {
     var vm = this;
     vm.url = 'https://friendsinlowplaces.firebaseio.com';
     vm.register = {};
@@ -31,9 +31,9 @@ angular
           } else {
             console.log("logged in successfully")
             location.href='#/drunks'
-            // $rootScope.auth = authData;
+            //$rootScope.auth = authData;
             // $location.path('/people');
-            // $scope.$apply();
+            //$scope.$apply();
           }
         });
 
@@ -63,12 +63,19 @@ angular
               console.log("Error creating user:", error);
           }
         } else {
+          $http.post('https://friendsinlowplaces.firebaseio.com/users.json', vm.register);
           console.log("Successfully created user account with uid:", userData.uid);
           $('#modal').modal('hide');
           location.href='#/drunks';
         }
       });
-    }
+    };
+    // vm.logOut = function () {
+    //   var fb = new Firebase(vm.url);
+    //   fb.unauth();
+    //   location.href='/';
+    //   console.log("You logged out");
+    // }
   });
 
 
