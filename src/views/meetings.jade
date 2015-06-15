@@ -1,0 +1,15 @@
+.meetings.cf
+  h1 Add Meeting
+  form.formgroup.addmeeting.cf(name='myform', ng-submit='addMeeting()', novalidate='')
+    .inputwrapper
+      input(type='text', name='meetingname', placeholder='Meeting name', ng-model='meetingname', ng-required='true')
+    button.btn(type='submit', ng-disabled='myform.$invalid') +
+  h2 Your meetings
+  .meeting(ng-repeat='(key, meeting) in meetings')
+    button.btn.btn-delete.tooltip(ng-click='deleteMeeting(key)')
+      span Delete this meeting
+    a.btn.btn-list.tooltip(ng-href='#/checkins/{{currentUser.regUser}}/{{key}}/checkinsList')
+      span View list of checked in users
+    a.btn.btn-checkin.tooltip(ng-href='#/checkins/{{currentUser.regUser}}/{{key}}')
+      span Go to check-in URL
+    span.text {{meeting.name}}

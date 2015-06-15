@@ -1,0 +1,9 @@
+.table
+  ul
+    li.branding: a(ng-href='#/') angularData
+    li: a(ng-show='currentUser', ng-href='#/meetings')
+        | Meetings
+        span(ng-show='howManyMeetings')
+          | {{ '(' + howManyMeetings + ')' }}
+    li: a(ng-hide='currentUser', ng-href='#/login') Login
+    li: a(ng-hide='currentUser', ng-href='#/register') Register

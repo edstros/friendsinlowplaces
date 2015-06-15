@@ -1,0 +1,46 @@
+.checkinslist
+      h1 Check-ins
+      p Here's a list of your latest check-ins
+      .search.cf
+        h2 Search Check-ins
+        input(type='text', ng-model='query', placeholder='Search for Users')
+        .formgroup.cf
+          span.label by:
+          select(ng-model='order')
+            option(value='firstname') First Name
+            option(value='lastname') Last Name
+            option(value='date') Date
+        .formgroup.cf
+          input#dirascending(type='radio', ng-model='direction', name='direction')
+          label(for='dirascending') asc
+          input#dirdescending(type='radio', ng-model='direction', name='direction', value='reverse')
+          label(for='dirdescending') desc
+        .buttons.cf(ng-show='currentUser')
+          button.btn.btn-pick(ng-hide='recordId', ng-click='pickRandom()') Pick Random
+          button.btn.btn-pick(ng-show='recordId', type='button', ng-click="recordId=''") Reset
+      ul.userlist.cf
+        li(ng-class='checkin.userState', ng-repeat='checkin in checkins |\
+        orderBy: order:direction | filter: { $id: recordId,\
+        $: query}')
+          .checkin
+            .buttons(ng-show='currentUser')
+              button.btn.btn-delete.tooltip(confirmation-needed='Are you sure you want to delete this checkin?', ng-click='deleteCheckin(checkin.$id)')
+                span Delete this check-in
+              button.btn.btn-love.tooltip(ng-click='showLove(checkin)')
+                span Show the love
+            .info
+              h2 {{checkin.firstname}} {{checkin.lastname}}
+              .date
+                | {{ checkin.date | date: "MMM d, yy h:mm a"}}
+            .showcheckins(ng-show='checkin.show')
+              form.cf(ng-submit='giveLove(checkin, checkin.giftText)', novalidate='')
+                input(type='text', name='giftText', ng-required='true', placeholder='What are you giving them?', ng-model='checkin.giftText')
+                button.btn(type='submit', ng-disabled='myform.$invalid') +
+              ul.awardslist.cf
+                li.cf(ng-repeat='(key,award) in checkin.awards')
+                  .award
+                    | {{award.name}}
+                    .buttons(ng-show='currentUser')
+                      button.btn.btn-delete.tooltip(confirmation-needed='Are you sure you want to delete this award?', ng-click='deleteLove(checkin.$id,key)')
+                        span Delete this award
+

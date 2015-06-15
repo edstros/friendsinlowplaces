@@ -1,0 +1,15 @@
+section.login
+  form(name='myform', ng-submit='login()', novalidate='')
+    h1 Hi there!
+    p Log-in to access the awesomeness!
+    p.error.formerror(ng-show='message') {{ message }}
+    input(type='email', name='email', placeholder='Email', ng-model='user.email', ng-required='true')
+    p.error.validationerror(ng-show='myform.email.$invalid && myform.email.$touched')
+      | Must be a valid email
+    input(type='password', name='password', placeholder='Password', ng-model='user.password', ng-required='true')
+    p.error.validationerror(ng-show='myform.password.$invalid && myform.password.$touched')
+      | password is required
+    button.btn(type='submit', ng-disabled='myform.$invalid') Login
+    p
+      | or
+      a(href='#/register') register
