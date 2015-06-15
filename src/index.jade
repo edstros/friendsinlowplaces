@@ -1,5 +1,33 @@
 doctype html
-html(lang="en-US", ng-app="lowPlaces")
+html(lang='en', ng-app='lowPlaces')
+  head
+    meta(charset='UTF-8')
+    title Friends in Low Places
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    link(rel='stylesheet', href='css/main.css')
+    script(src='js/angular/angular.min.js')
+    script(src='js/angular/angular-route.min.js')
+    script(src='js/angular/angular-animate.min.js')
+    script(src='https://cdn.firebase.com/js/client/2.1.0/firebase.js')
+    script(src='https://cdn.firebase.com/libs/angularfire/0.9.1/angularfire.min.js')
+    script(src='js/app.js')
+    script(src='js/services/authentication.js')
+    script(src='js/services/countmeetings.js')
+    script(src='js/controllers/meetings.js')
+    script(src='js/controllers/registration.js')
+    script(src='js/controllers/status.js')
+    script(src='js/controllers/checkins.js')
+    script(src='js/directives/confirm.js')
+  body
+    header
+      nav.cf(ng-include="'views/nav.html'")
+    .page
+      .userinfo(ng-controller='StatusController', ng-show='currentUser')
+        span.userinfo Hi {{ currentUser.firstname }}
+        a(ng-href='#/logout', ng-click='logout()') logout
+      main.cf(ng-view='')
+//doctype html
+//html(lang="en-US", ng-app="lowPlaces")
   head
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
